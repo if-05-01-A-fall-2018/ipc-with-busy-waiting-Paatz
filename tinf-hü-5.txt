@@ -1,0 +1,64 @@
+Was ist eine Race Condition?
+
+-Ist ein Wettrennen um den Zugriff auf Resourcen
+
+-Ist eine nicht nicht erwünschte Situation 
+
+-Es entsteht wenn ein System, Gerät , ... versucht,
+	mehrere Operationen gleichzeitig auszuführen. 
+
+
+Interrupts deaktivieren
+
+1.)Warum ist ein gegenseitiger Ausschluss 
+   durch Deaktivieren von Interrupts auf einem 
+   Multi-Core-Computer nicht möglich?
+
+   In einer Multi-Core-Maschine führt jede CPU gleichzeitig Codes aus.
+   Die Deaktivierung von Interrupts der aktuellen CPU verhindert nicht,
+   dass eine andere CPU in dieselbe Region eintritt.
+
+2.)Warum ist es gefährlich Benutzerprozessen die Möglichkeit zu geben,
+   Interrupts zu deaktivieren?
+
+   Man sollte Benutzerprozesse nicht die Möglichkeit geben,
+   Interrupts auszuschalten, da Sie selbst Interrupts sind 
+   und vorübergehend unterbrochen werden können
+
+
+
+Peterson's Solution
+
+1.)Spielen Sie die beiden Szenarien des Handouts der Peterson-Lösung ab,
+   und dokumentieren Sie, wie es funktioniert.
+
+   Prozess 0 tretet ein in enter_region
+   Jetzt sind alle anderen Prozesse geblockt und können nicht beitreten
+   Prozess 0 arbeitet weiter
+   Prozess 1 wartet bis Prozess 0 fertig ist
+   Nachdem Prozess 0 die Region verlässt, 
+   kann der Prozess 1 in die kritische Region gehen 
+   Prozess 1 arbeitet
+   Prozess 1 ist fertig
+
+2.)Spielen Sie das Szenario durch, bei dem der 
+   strikte Wechselversuch fehlschlägt. Dokumentieren Sie,
+   wie es fehlschlägt.
+
+   Falls der Prozess in der kritischen Region nicht
+   dahin kommt, dass er nicht mehr interessiert ist,
+   dann wird ein anderer Prozess endlos warten.
+   
+
+3.)Was bedeutet der variable Verlierer in der Lösung von Peterson?
+   Wann hat es Wirkung?
+
+   Der Verlierer Prozess darf nicht in die kritische Region.
+
+
+4.)Erweitern Sie die angegebenen Funktionen so, dass sie 
+   drei Prozesse verarbeiten können.
+
+   
+    
+
